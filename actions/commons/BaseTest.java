@@ -15,7 +15,7 @@ public class BaseTest {
         return driver;
     }
 
-    protected WebDriver getBrowserDriver(String browserName){
+    protected WebDriver getBrowserDriver(String browserName, String url){
         BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
         switch (browserList){
             case FIREFOX:
@@ -31,13 +31,13 @@ public class BaseTest {
                 throw new RuntimeException("Browser name is not valid");
         }
 
-        //driver.get(GlobalConstants.URL);
+        driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();
 
         return driver;
     }
-
+    protected void closeBrowserDriver(){ driver.quit();}
     protected int generateRandomNumber(){
         return new Random().nextInt(99999);
     }

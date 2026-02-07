@@ -3,11 +3,11 @@ package pageObjects;
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPageObject extends BasePage {
+public class LoginPO extends BasePage {
 
     private WebDriver driver;
 
-    public LoginPageObject(WebDriver driver){
+    public LoginPO(WebDriver driver){
         this.driver = driver;
     }
 }

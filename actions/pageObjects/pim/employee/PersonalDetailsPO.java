@@ -1,10 +1,8 @@
-package pageObjects.employee;
+package pageObjects.pim.employee;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 
-public class PersonalDetailsPO extends BasePage {
-
+public class PersonalDetailsPO {
     private WebDriver driver;
 
     public PersonalDetailsPO(WebDriver driver){

@@ -2,10 +2,10 @@ package pageObjects.pim.employee;
 
 import org.openqa.selenium.WebDriver;
 
-public class AddNewPO {
+public class AddNewEmployeePO {
     private WebDriver driver;
 
-    public AddNewPO(WebDriver driver){
+    public AddNewEmployeePO(WebDriver driver){
         this.driver = driver;
     }
 }

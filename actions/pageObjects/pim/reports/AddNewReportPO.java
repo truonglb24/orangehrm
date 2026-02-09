@@ -1,4 +1,4 @@
 package pageObjects.pim.reports;
 
-public class AddNewPO {
+public class AddNewReportPO {
 }

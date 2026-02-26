@@ -10,4 +10,18 @@ public class LoginPO extends BasePage {
     public LoginPO(WebDriver driver){
         this.driver = driver;
     }
+
+    public void enterToUsernameTextbox(String username) {
+        // TODO
+    }
+
+    public void enterToPasswordTextbox(String password) {
+        // TODO
+    }
+
+
+    public DashboardP0 clickToLoginButton() {
+        // TODO
+        return PageGenerator.getDashboardPage(driver);
+    }
 }

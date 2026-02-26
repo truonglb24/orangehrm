@@ -2,6 +2,8 @@ package pageObjects;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.devtools.v85.page.Page;
+import pageObjects.pim.employee.EmployeeListPO;
 
 public class DashboardP0 extends BasePage {
 
@@ -9,5 +11,9 @@ public class DashboardP0 extends BasePage {
 
     public DashboardP0(WebDriver driver){
         this.driver = driver;
+    }
+
+    public EmployeeListPO clickToPIMPage() {
+        return PageGenerator.getEmployeeListPage(driver);
     }
 }

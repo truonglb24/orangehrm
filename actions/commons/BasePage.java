@@ -102,11 +102,52 @@ public class BasePage {
     }
 
     public WebElement getElement(WebDriver driver, String locator){
-        return driver.findElement(getByXPath(locator));
+        return driver.findElement(getByLocator(locator));
     }
 
     public List<WebElement> getListElement(WebDriver driver, String locator){
         return driver.findElements(By.xpath(locator));
+    }
+
+    //Convention: css/ Css / CSS - id /ID/Id
+    // EX: css = button#Login => by.cssSelector()
+    public By getByLocator(String prefixLocator) {
+        String locator = prefixLocator.trim();
+        String prefix = locator.substring(0, locator.indexOf("=")).toLowerCase();
+        String value = locator.substring(locator.indexOf("=") + 1);
+
+        switch (prefix) {
+            case "id":
+                return By.id(value);
+
+            case "css":
+                return By.cssSelector(value);
+
+            case "xpath":
+                return By.xpath(value);
+
+            case "name":
+                return By.name(value);
+
+            case "class":
+            case "className":
+                return By.className(value);
+
+            case "tag":
+            case "tagname":
+                return By.tagName(value);
+
+            case "link":
+            case "linktext":
+                return By.linkText(value);
+
+            case "partiallink":
+            case "partiallinktext":
+                return By.partialLinkText(value);
+
+            default:
+                throw new RuntimeException("Locator type is not supported: " + prefixLocator);
+        }
     }
 
     public By getByXPath(String locator){

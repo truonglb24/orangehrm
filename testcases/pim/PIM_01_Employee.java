@@ -28,8 +28,8 @@ public class PIM_01_Employee extends BaseTest {
     public void beforeClass (String browserName, String url){
         driver = getBrowserDriver(browserName, url);
         loginPage = PageGenerator.getLoginPage(driver);
-        loginPage.enterToUsernameTextbox("");
-        loginPage.enterToPasswordTextbox("");
+        loginPage.enterToUsernameTextbox("truonglb");
+        loginPage.enterToPasswordTextbox("WrPvX$W64><o-5");
         dashboardPage = loginPage.clickToLoginButton();
     }
     @Test
@@ -90,8 +90,8 @@ public class PIM_01_Employee extends BaseTest {
     }
 
 
-    @AfterClass
-    public void afterClass (){
-        closeBrowserDriver();
-    }
+//    @AfterClass
+//    public void afterClass (){
+//        closeBrowserDriver();
+//    }
 }

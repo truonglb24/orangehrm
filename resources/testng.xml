@@ -6,12 +6,12 @@
 <!--        <listener class-name="commons.TestNGAppender"></listener>-->
 <!--    </listeners>-->
 
-    <parameter name="url" value="http://localhost:90/orangehrm5"></parameter>
+    <parameter name="url" value="http://localhost:8080/orangehrm"></parameter>
     
     <test name="Run on Firefox browser" preserve-order="true">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="pim.PIM_01_Employee"></class>
+            <class name="Test01"></class>
         </classes>
     </test>
 </suite>

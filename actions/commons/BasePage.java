@@ -51,7 +51,7 @@ public class BasePage {
     }
 
     public Alert waitAlertPrecence(WebDriver driver){
-        return new WebDriverWait(driver, Duration.ofSeconds(15))
+        return new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT))
                 .until(ExpectedConditions.alertIsPresent());
     }
 
@@ -176,10 +176,10 @@ public class BasePage {
 
     public void selectItemInCustomDropdown(WebDriver driver, String parentLocator,String childItemLocator, String expectItem){
         getElement(driver, parentLocator).click();
-        sleepInSeconds(2);
-        List<WebElement> allItems = new WebDriverWait(driver, Duration.ofSeconds(15))
+        sleepInSeconds(GlobalConstants.SEC);
+        List<WebElement> allItems = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(childItemLocator)));
-        sleepInSeconds(2);
+        sleepInSeconds(GlobalConstants.SEC);
         for (WebElement item: allItems){
             if (item.getText().trim().equals(expectItem)){
                 item.click();
@@ -291,13 +291,13 @@ public class BasePage {
         WebElement element = getElement(driver, locator);
         String originalStyle = element.getAttribute("style");
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('style', arguments[1])", element, "border: 2px solid red; border-style: dashed;");
-        sleepInSeconds(2);
+        sleepInSeconds(GlobalConstants.SEC);
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('style', arguments[1])", element, originalStyle);
     }
 
     public void clickToElementByJS(WebDriver driver, String locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getElement(driver, locator));
-        sleepInSeconds(3);
+        sleepInSeconds(GlobalConstants.SEC);
     }
 
     public void scrollToElementOnTopByJS(WebDriver driver, String locator) {
@@ -340,22 +340,22 @@ public class BasePage {
     }
 
     public void waitForElementVisible(WebDriver driver, String locator){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByXPath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOfElementLocated(getByXPath(locator)));
     }
 
     public void waitForElementSelected(WebDriver driver, String locator){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeSelected(getByXPath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.elementToBeSelected(getByXPath(locator)));
     }
 
     public void waitForElementPresence(WebDriver driver, String locator){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(getByXPath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.presenceOfElementLocated(getByXPath(locator)));
     }
 
     public void waitForElementInvisible(WebDriver driver, String locator){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOfElementLocated(getByXPath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.invisibilityOfElementLocated(getByXPath(locator)));
     }
 
     public void waitForElementClickable(WebDriver driver, String locator){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getByXPath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.elementToBeClickable(getByXPath(locator)));
     }
 }

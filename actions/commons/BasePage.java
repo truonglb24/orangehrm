@@ -111,10 +111,10 @@ public class BasePage {
 
     //Convention: css/ Css / CSS - id /ID/Id
     // EX: css = button#Login => by.cssSelector()
-    public By getByLocator(String prefixLocator) {
-        String locator = prefixLocator.trim();
-        String prefix = locator.substring(0, locator.indexOf("=")).toLowerCase();
-        String value = locator.substring(locator.indexOf("=") + 1);
+    public By getByLocator(String locator) {
+
+        String prefix = locator.substring(0, locator.indexOf("=")).toLowerCase().trim();
+        String value = locator.substring(locator.indexOf("=") + 1).trim();
 
         switch (prefix) {
             case "id":
@@ -146,7 +146,7 @@ public class BasePage {
                 return By.partialLinkText(value);
 
             default:
-                throw new RuntimeException("Locator type is not supported: " + prefixLocator);
+                throw new RuntimeException("Locator type is not supported: " + locator);
         }
     }
 

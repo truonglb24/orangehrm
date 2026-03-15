@@ -113,6 +113,10 @@ public class BasePage {
     // EX: css = button#Login => by.cssSelector()
     public By getByLocator(String locator) {
 
+        if (locator == null || locator.trim().isEmpty()){
+            throw new IllegalArgumentException("Locator type cannot be null or empty.");
+        }
+
         String prefix = locator.substring(0, locator.indexOf("=")).toLowerCase().trim();
         String value = locator.substring(locator.indexOf("=") + 1).trim();
 
@@ -146,7 +150,7 @@ public class BasePage {
                 return By.partialLinkText(value);
 
             default:
-                throw new RuntimeException("Locator type is not supported: " + locator);
+                throw new IllegalArgumentException("Locator type is not supported: " + locator);
         }
     }
 

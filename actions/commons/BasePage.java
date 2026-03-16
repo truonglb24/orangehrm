@@ -109,6 +109,9 @@ public class BasePage {
         return driver.findElements(By.xpath(locator));
     }
 
+    private String castParameter (String locator, String... restParameter){
+        return String.format(locator, (Object[]) restParameter);
+    }
     //Convention: css/ Css / CSS - id /ID/Id
     // EX: css = button#Login => by.cssSelector()
     public By getByLocator(String locator) {

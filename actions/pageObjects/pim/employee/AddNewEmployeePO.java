@@ -1,9 +1,10 @@
 package pageObjects.pim.employee;
 
+import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
 
-public class AddNewEmployeePO {
+public class AddNewEmployeePO extends BasePage {
     private WebDriver driver;
 
     public AddNewEmployeePO(WebDriver driver){
@@ -24,6 +25,7 @@ public class AddNewEmployeePO {
     }
 
     public PersonalDetailsPO clickToSaveButton() {
+        waitAllLoadingIconInvisible(driver);
         return PageGenerator.getPersonalDetailsPage(driver);
     }
 }

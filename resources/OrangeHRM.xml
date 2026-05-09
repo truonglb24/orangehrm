@@ -11,7 +11,7 @@
     <test name="Run on Firefox browser" preserve-order="true">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="Test01"></class>
+            <class name="pim.PIM_01_Employee"></class>
         </classes>
     </test>
 </suite>

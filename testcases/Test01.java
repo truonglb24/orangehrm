@@ -27,8 +27,8 @@ public class Test01 extends BaseTest {
         dashboardPage = loginPage.clickToLoginButton();
     }
 
-//    @AfterTest
-//    public void afterClass() {
-//        driver.quit();
-//    }
+    @AfterTest
+    public void afterClass() {
+        driver.quit();
+    }
 }

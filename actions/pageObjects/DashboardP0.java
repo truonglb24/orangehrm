@@ -14,6 +14,7 @@ public class DashboardP0 extends BasePage {
     }
 
     public EmployeeListPO clickToPIMPage() {
+        waitAllLoadingIconInvisible(driver);
         return PageGenerator.getEmployeeListPage(driver);
     }
 }

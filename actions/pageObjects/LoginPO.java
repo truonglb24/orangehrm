@@ -13,20 +13,20 @@ public class LoginPO extends BasePage {
     }
 
     public void enterToUsernameTextbox(String username) {
-        // TODO
+        waitForElementVisible(driver, LoginPUI.USERNAME_TEXTBOX);
         clearInput(driver, LoginPUI.USERNAME_TEXTBOX);
         sendkeyToElement(driver, LoginPUI.USERNAME_TEXTBOX, username);
     }
 
     public void enterToPasswordTextbox(String password) {
-        // TODO
+        waitForElementVisible(driver, LoginPUI.PASSWORD_TEXTBOX);
         clearInput(driver, LoginPUI.PASSWORD_TEXTBOX);
         sendkeyToElement(driver, LoginPUI.PASSWORD_TEXTBOX, password);
     }
 
 
     public DashboardP0 clickToLoginButton() {
-        // TODO
+        waitForElementClickable(driver, LoginPUI.BUTTON_LOGIN);
         clickToElement(driver, LoginPUI.BUTTON_LOGIN);
         return PageGenerator.getDashboardPage(driver);
     }

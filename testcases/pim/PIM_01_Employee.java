@@ -29,7 +29,7 @@ public class PIM_01_Employee extends BaseTest {
         driver = getBrowserDriver(browserName, url);
         loginPage = PageGenerator.getLoginPage(driver);
         loginPage.enterToUsernameTextbox("truonglb");
-        loginPage.enterToPasswordTextbox("WrPvX$W64><o-5");
+        loginPage.enterToPasswordTextbox("QhMQ5piu:qT6nEC");
         dashboardPage = loginPage.clickToLoginButton();
     }
     @Test
@@ -44,9 +44,6 @@ public class PIM_01_Employee extends BaseTest {
         employeeID = addNewEmployeePage.getEmployeeID();
 
         personalDetailsPage = addNewEmployeePage.clickToSaveButton();
-
-
-
     }
     @Test
     public void Employee_01_Upload_Avatar(){
@@ -90,8 +87,8 @@ public class PIM_01_Employee extends BaseTest {
     }
 
 
-//    @AfterClass
-//    public void afterClass (){
-//        closeBrowserDriver();
-//    }
+    @AfterClass
+    public void afterClass (){
+        closeBrowserDriver();
+    }
 }

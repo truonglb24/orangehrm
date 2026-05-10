@@ -20,12 +20,14 @@ public class PIM_01_Employee extends BaseTest {
     private AddNewEmployeePO addNewEmployeePage;
     private EmployeeListPO employeeListPage;
     private PersonalDetailsPO personalDetailsPage;
-
-    private String employeeID;
+    private String employeeID, firstName, lastName;
 
     @Parameters({"browser", "url"})
     @BeforeClass
     public void beforeClass (String browserName, String url){
+        firstName = "Lee";
+        lastName = "Truong";
+
         driver = getBrowserDriver(browserName, url);
         loginPage = PageGenerator.getLoginPage(driver);
         loginPage.enterToUsernameTextbox("truonglb");
@@ -38,11 +40,10 @@ public class PIM_01_Employee extends BaseTest {
 
         addNewEmployeePage = employeeListPage.clickToAddNewEmployeeButton();
 
-        addNewEmployeePage.enterToFirstNameTextbox("");
-        addNewEmployeePage.enterToMiddleNameTextbox("");
-        addNewEmployeePage.enterToLastNameTextbox("");
+        addNewEmployeePage.enterToFirstNameTextbox(firstName);
+        addNewEmployeePage.enterToLastNameTextbox(lastName);
         employeeID = addNewEmployeePage.getEmployeeID();
-
+        System.out.println("employeeID:" + employeeID);
         personalDetailsPage = addNewEmployeePage.clickToSaveButton();
     }
     @Test
@@ -87,8 +88,8 @@ public class PIM_01_Employee extends BaseTest {
     }
 
 
-    @AfterClass
-    public void afterClass (){
-        closeBrowserDriver();
-    }
+//    @AfterClass
+//    public void afterClass (){
+//        closeBrowserDriver();
+//    }
 }

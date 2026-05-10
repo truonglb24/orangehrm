@@ -3,6 +3,8 @@ package pageObjects.pim.employee;
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
+import pageUIs.pim.employee.AddNewPUI;
+
 
 public class AddNewEmployeePO extends BasePage {
     private WebDriver driver;
@@ -11,20 +13,24 @@ public class AddNewEmployeePO extends BasePage {
         this.driver = driver;
     }
 
-    public void enterToFirstNameTextbox(String s) {
+    public void enterToFirstNameTextbox(String firstName) {
+        waitForElementVisible(driver, AddNewPUI.FIRSTNAME_TEXTBOX);
+        sendkeyToElement(driver, AddNewPUI.FIRSTNAME_TEXTBOX,firstName);
     }
 
-    public void enterToMiddleNameTextbox(String s) {
-    }
-
-    public void enterToLastNameTextbox(String s) {
+    public void enterToLastNameTextbox(String lastName) {
+        waitForElementVisible(driver, AddNewPUI.LASTNAME_TEXTBOX);
+        sendkeyToElement(driver, AddNewPUI.LASTNAME_TEXTBOX,lastName);
     }
 
     public String getEmployeeID() {
-        return "";
+        waitForElementVisible(driver, AddNewPUI.EMPLOYEE_ID_TEXTBOX);
+        return getElementAttribute(driver, AddNewPUI.EMPLOYEE_ID_TEXTBOX,"_value");
     }
 
     public PersonalDetailsPO clickToSaveButton() {
+        waitForElementVisible(driver, AddNewPUI.SAVE_BUTTON_AT_ADD_EMPLOYEE_CONTAINER);
+        clickToElement(driver, AddNewPUI.SAVE_BUTTON_AT_ADD_EMPLOYEE_CONTAINER);
         waitAllLoadingIconInvisible(driver);
         return PageGenerator.getPersonalDetailsPage(driver);
     }

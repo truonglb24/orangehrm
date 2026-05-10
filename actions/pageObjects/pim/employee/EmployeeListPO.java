@@ -1,9 +1,11 @@
 package pageObjects.pim.employee;
 
+import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
+import pageUIs.pim.employee.EmployeeListPUI;
 
-public class EmployeeListPO {
+public class EmployeeListPO extends BasePage {
     private WebDriver driver;
 
     public EmployeeListPO(WebDriver driver){
@@ -11,6 +13,9 @@ public class EmployeeListPO {
     }
 
     public AddNewEmployeePO clickToAddNewEmployeeButton() {
+        waitForElementVisible(driver, EmployeeListPUI.ADD_EMPLOYEE_NAV_BUTTON);
+        clickToElement(driver, EmployeeListPUI.ADD_EMPLOYEE_NAV_BUTTON);
+        waitAllLoadingIconInvisible(driver);
         return PageGenerator.getAddNewEmployeePage(driver);
     }
 }

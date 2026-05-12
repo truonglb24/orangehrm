@@ -28,7 +28,7 @@ public class AddNewEmployeePO extends BasePage {
         return getElementAttribute(driver, AddNewPUI.EMPLOYEE_ID_TEXTBOX,"_value");
     }
 
-    public PersonalDetailsPO clickToSaveButton() {
+    public PersonalDetailsPO clickToSaveButtonAtEmployeeContainer() {
         waitForElementVisible(driver, AddNewPUI.SAVE_BUTTON_AT_ADD_EMPLOYEE_CONTAINER);
         clickToElement(driver, AddNewPUI.SAVE_BUTTON_AT_ADD_EMPLOYEE_CONTAINER);
         waitAllLoadingIconInvisible(driver);

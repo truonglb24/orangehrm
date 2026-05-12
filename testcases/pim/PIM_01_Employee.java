@@ -43,12 +43,13 @@ public class PIM_01_Employee extends BaseTest {
         addNewEmployeePage.enterToFirstNameTextbox(firstName);
         addNewEmployeePage.enterToLastNameTextbox(lastName);
         employeeID = addNewEmployeePage.getEmployeeID();
-        System.out.println("employeeID:" + employeeID);
-        personalDetailsPage = addNewEmployeePage.clickToSaveButton();
+        personalDetailsPage = addNewEmployeePage.clickToSaveButtonAtEmployeeContainer();
     }
     @Test
     public void Employee_01_Upload_Avatar(){
-
+        personalDetailsPage.clickToEmployeeAvatarImage();
+        personalDetailsPage.loadAvatarImage();
+        personalDetailsPage.clickToSaveButtonAtProfileContainer();
     }
     @Test
     public void Employee_01_Personal_Details(){

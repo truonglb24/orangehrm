@@ -14,4 +14,9 @@ public class GlobalConstants {
     public static final long SHORT_TIMEOUT = 10;
     public static final long LONG_TIMEOUT = 30;
     public static final long SEC = 2;
+
+    //Download/ Upload file
+    public static final String UPLOAD_PATH = PROJECT_PATH + SEPARATOR + "uploadFile" + SEPARATOR;
+    public static final String DOWNLOAD_PATH = PROJECT_PATH + SEPARATOR + "downloadFile" + SEPARATOR;
+
 }

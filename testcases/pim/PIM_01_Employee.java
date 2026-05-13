@@ -1,7 +1,9 @@
 package pim;
 
 import commons.BaseTest;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -13,6 +15,7 @@ import pageObjects.pim.employee.AddNewEmployeePO;
 import pageObjects.pim.employee.EmployeeListPO;
 import pageObjects.pim.employee.PersonalDetailsPO;
 
+
 public class PIM_01_Employee extends BaseTest {
     private WebDriver driver;
     private LoginPO loginPage;
@@ -21,6 +24,7 @@ public class PIM_01_Employee extends BaseTest {
     private EmployeeListPO employeeListPage;
     private PersonalDetailsPO personalDetailsPage;
     private String employeeID, firstName, lastName;
+    private String avatarImageName = "avatar.png";
 
     @Parameters({"browser", "url"})
     @BeforeClass
@@ -47,9 +51,22 @@ public class PIM_01_Employee extends BaseTest {
     }
     @Test
     public void Employee_01_Upload_Avatar(){
+
         personalDetailsPage.clickToEmployeeAvatarImage();
-        personalDetailsPage.loadAvatarImage();
+        // Get width/height element => WH
+        Dimension beforeUpload = personalDetailsPage.getAvatarSize();
+        System.out.println("beforeUpload" + beforeUpload);
+        personalDetailsPage.uploadMutipleFiles(driver, avatarImageName);
+        Dimension afterUpload = personalDetailsPage.getAvatarSize();
+        System.out.println("afterUpload" + afterUpload);
+        // Save
         personalDetailsPage.clickToSaveButtonAtProfileContainer();
+        // Verify
+        Assert.assertTrue(personalDetailsPage.isSuccessMessageIsDisplayed("Successfully updated"));
+        // Icon loading
+        personalDetailsPage.waitAllLoadingIconInvisible(driver);
+        // Assert W/H after and before upload
+        Assert.assertTrue(personalDetailsPage.isProfileAvatarUpdateSuccess(beforeUpload, afterUpload));
     }
     @Test
     public void Employee_01_Personal_Details(){

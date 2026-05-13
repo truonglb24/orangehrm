@@ -375,4 +375,22 @@ public class BasePage {
     public boolean waitAllLoadingIconInvisible(WebDriver driver) {
          return waitForListElementInvisible(driver, BasePUI.LOADING_ICON);
     }
+
+    public void uploadMutipleFiles(WebDriver driver, String ...fileNames){
+        // Get path from upload file folder
+        String filePath = GlobalConstants.UPLOAD_PATH;
+
+        String fullFileName = "";
+
+        // Loop file name
+        for (String file : fileNames){
+            fullFileName += filePath + file + "\n";
+        }
+
+        // Trim character breakline (\n) in array
+        fullFileName = fullFileName.trim();
+
+        // Sendkey
+        getElement(driver, BasePUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
+    }
 }

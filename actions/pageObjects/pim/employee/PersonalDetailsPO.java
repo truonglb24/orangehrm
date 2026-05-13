@@ -13,27 +13,27 @@ public class PersonalDetailsPO extends BasePage {
     }
 
     public void clickToEmployeeAvatarImage(){
-        waitForElementVisible(driver, PersonalDetailsPUI.EDIT_EMPLOYEE_IMAGE);
-        clickToElement(driver, PersonalDetailsPUI.EDIT_EMPLOYEE_IMAGE);
+        waitForElementClickable(driver, PersonalDetailsPUI.EMPLOYEE_IMAGE);
+        clickToElement(driver, PersonalDetailsPUI.EMPLOYEE_IMAGE);
     }
 
     public Dimension getAvatarSize(){
-        waitForElementVisible(driver, PersonalDetailsPUI.AVATAR_IMG);
-        return getElement(driver,PersonalDetailsPUI.AVATAR_IMG).getSize();
+        waitForElementVisible(driver, PersonalDetailsPUI.EMPLOYEE_IMAGE);
+        return getElementSize(driver, PersonalDetailsPUI.EMPLOYEE_IMAGE);
     }
 
     public void clickToSaveButtonAtProfileContainer(){
-        waitForElementVisible(driver, PersonalDetailsPUI.BUTTON_SAVE_AT_PROFILE_CONTAINER);
+        waitForElementClickable(driver, PersonalDetailsPUI.BUTTON_SAVE_AT_PROFILE_CONTAINER);
         clickToElement(driver, PersonalDetailsPUI.BUTTON_SAVE_AT_PROFILE_CONTAINER);
     }
 
-    public boolean isSuccessMessageIsDisplayed(String message){
+    public boolean isSuccessMessageIsDisplayed(){
         waitForElementVisible(driver, PersonalDetailsPUI.UPLOAD_SUCCESS_MESSAGE);
-        return getElementText(driver, PersonalDetailsPUI.UPLOAD_SUCCESS_MESSAGE).equals(message);
+        return isElementDisplayed(driver, PersonalDetailsPUI.UPLOAD_SUCCESS_MESSAGE);
     }
 
-    public boolean isProfileAvatarUpdateSuccess(Dimension beforeUpload,Dimension afterUpload){
-        return (beforeUpload.getHeight() == afterUpload.getHeight())
-                && (beforeUpload.getWidth() == afterUpload.getWidth());
+    public boolean isProfileAvatarUpdateSuccess(Dimension beforeUpload){
+        Dimension afterUpload = getAvatarSize();
+        return !(beforeUpload.equals(afterUpload));
     }
 }

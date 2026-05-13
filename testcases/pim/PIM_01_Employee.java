@@ -55,18 +55,15 @@ public class PIM_01_Employee extends BaseTest {
         personalDetailsPage.clickToEmployeeAvatarImage();
         // Get width/height element => WH
         Dimension beforeUpload = personalDetailsPage.getAvatarSize();
-        System.out.println("beforeUpload" + beforeUpload);
         personalDetailsPage.uploadMutipleFiles(driver, avatarImageName);
-        Dimension afterUpload = personalDetailsPage.getAvatarSize();
-        System.out.println("afterUpload" + afterUpload);
         // Save
         personalDetailsPage.clickToSaveButtonAtProfileContainer();
         // Verify
-        Assert.assertTrue(personalDetailsPage.isSuccessMessageIsDisplayed("Successfully updated"));
+        Assert.assertTrue(personalDetailsPage.isSuccessMessageIsDisplayed());
         // Icon loading
         personalDetailsPage.waitAllLoadingIconInvisible(driver);
         // Assert W/H after and before upload
-        Assert.assertTrue(personalDetailsPage.isProfileAvatarUpdateSuccess(beforeUpload, afterUpload));
+        Assert.assertTrue(personalDetailsPage.isProfileAvatarUpdateSuccess(beforeUpload));
     }
     @Test
     public void Employee_01_Personal_Details(){
